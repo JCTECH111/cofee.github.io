@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cappuccino Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Custom brown color */
+        .bg-brown-700 {
+            background: #622508;
+        }
+        .bg-brown1-700 {
+            background: linear-gradient(to bottom, #622508, #260202);
+        }
+
+        .text-brown-700 {
+            color: #622508;
+        }
+        .height{
+            height: 4cm;
+        }
+       .img{
+        top: -1rem;
+       }
+       .hfull{
+        height: 100vh;
+        overflow-y: scroll;
+       }
+    </style>
+</head>
+
+<body class="bg-white">
+    <!-- Cappuccino Product Card -->
+    <section class="max-w-sm mx-auto hfull  bg-white  shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div class="relative bg-brown1-700 p-4 rounded-b-3xl text-white overflow-hidden height mb-16">
+            <div class="flex justify-between items-center">
+                <button class="text-white">
+                    <i class="fas fa-arrow-left" onclick="window.location.href='index.html'"></i>
+                </button>
+                <h2 class="text-sm">Lagos NG</h2>
+                <button>
+                    <i class="far fa-heart text-white"></i>
+                </button>
+            </div>
+        </div>
+        <img src="cofee.png" alt="Cappuccino" class="img mx-auto mt-4 rounded-full absolute  right-24">
+
+        <!-- Product Details -->
+        <div class="p-4">
+            <!-- Rating and Price -->
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-1">
+                    <span class="bg-brown-700 text-white text-xl py-2 px-6 rounded-full">4.5</span>
+                    <i class="fas fa-star text-yellow-400"></i>
+                </div>
+                <span class="text-gray-500 text-lg">$20.50</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-xl font-semibold text-brown-700 mt-2">Cappuccino</h1>
+
+            <!-- Coffee Size Selection -->
+            <div class="mt-4">
+                <p class="text-gray-600 mb-1">Coffee size</p>
+                <div class="flex space-x-2">
+                    <button class="bg-brown-700 text-white py-1 px-3 rounded-full text-xs">Small</button>
+                    <button class="bg-gray-300 text-gray-700 py-1 px-3 rounded-full text-xs">Medium</button>
+                    <button class="bg-gray-300 text-gray-700 py-1 px-3 rounded-full text-xs">Large</button>
+                </div>
+            </div>
+
+            <!-- About -->
+            <div class="mt-4">
+                <p class="text-gray-600 text-xl mb-2 font-bold">About</p>
+                <p class="text-gray-500 text-sm" id="moreText">
+                    Coffee drink made with layering of espresso, steamed milk, and milk foam on top... 
+                    <span id="dots">...</span>
+                    <span id="more" class="hidden">
+                        This classic coffee drink originated in Italy and is loved for its balanced combination of rich coffee flavor and creamy texture. The espresso provides a strong foundation, while the steamed milk and milk foam add smoothness and a velvety finish to the drink.
+                    </span>
+                    <span class="text-brown-700 font-semibold cursor-pointer" onclick="toggleReadMore()" id="readMoreBtn">Read more</span>
+                </p>
+            </div>
+
+            <!-- Volume and Quantity -->
+            <div class="mt-4 flex justify-between items-center">
+                <p class="text-gray-500">Volume <span class="font-semibold text-brown-700">160ml</span></p>
+                <div class="flex items-center space-x-2">
+                    <button class="text-gray-700 border border-gray-400 rounded-full h-8 w-8 text-2xl px-2 " onclick="decreaseValue()">-</button>
+                    <span id="Value">2</span>
+                    <button class="text-gray-700 border border-gray-400 rounded-full  h-8 w-8 text-2xl px-2 " onclick="increaseValue()">+</button>
+                </div>
+            </div>
+
+            <!-- Buy Now Button -->
+            <div class="mt-6">
+                <button class="w-full bg-brown-700 text-white py-3 rounded-lg text-sm">Buy now</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        function increaseValue(){
+          let currentValue = parseInt(document.getElementById("Value").innerHTML);
+          document.getElementById("Value").innerHTML = currentValue + 1;
+        }
+     
+        function decreaseValue(){
+          let currentValue = parseInt(document.getElementById("Value").innerHTML);
+          if (currentValue > 0) {
+             document.getElementById("Value").innerHTML = currentValue - 1;
+          }
+        }
+        function toggleReadMore() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("readMoreBtn");
+    
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "Read more"; 
+                moreText.classList.add("hidden");
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read less"; 
+                moreText.classList.remove("hidden");
+            }
+        }
+     </script>
+     
+</body>
+
+</html>
